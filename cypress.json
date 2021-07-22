@@ -1,0 +1,11 @@
+{
+  "video": false,
+  "fixturesFolder": false,
+  "integrationFolder": "test",
+  "pluginsFile": false,
+  "screenshotOnRunFailure": false,
+  "screenshotsFolder": "test/screenshots",
+  "videosFolder": "test/videos",
+  "supportFile": false,
+  "testFiles": "**/*.spec.*"
+}
