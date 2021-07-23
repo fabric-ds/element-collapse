@@ -13,7 +13,7 @@ describe('transitions', () => {
   })
 
   it('expands', () => {
-    cy.visit('http://localhost:5000')
+    cy.visit('http://localhost:8080')
     cy.get('#target-two').then(weirdElementList => {
       const el = weirdElementList[0]
       el.style.height = '0px'
