@@ -22,7 +22,7 @@ const getAfterCollapseCallback = (done) => () => {
   if (done) done()
 }
 
-/*
+/**
  * Transitions an element from 0 to a detected height
  * @type {(el: HTMLElement, done?: function) => void}
  */
@@ -40,7 +40,7 @@ export const expand = (el, done) => {
   })
 }
 
-/*
+/**
  * Transitions an element from 0 to a detected height
  * @type {(el: HTMLElement, done?: function) => void}
  */
