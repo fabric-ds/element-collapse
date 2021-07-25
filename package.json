@@ -1,6 +1,6 @@
 {
   "name": "element-collapse",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "pure JS hooks to animate the expand/collapse of an element",
   "type": "module",
   "main": "index.js",
