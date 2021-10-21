@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://assets.finn.no/pkg/@fabric-ds/css/v0/fabric.min.css" />
+    <title>element collapse dev</title>
+  </head>
+  <body>
+    <div id="target-one">
+      <div class="bg-blue-500 p-32"><h1>Content One</h1></div>
+    </div>
+    <div id="target-two">
+      <div class="bg-blue-500 p-32"><h1>Content Two</h1></div>
+    </div>
+    <button id="button-two">Toggle two</button>
+    <script type="module">
+      import * as operations from './index.js'
+
+      let twoIsCollapsed = false
+      const two = document.querySelector('#target-two')
+
+      function toggleTwo() {
+        operations[twoIsCollapsed ? 'expand' : 'collapse'](two)
+        twoIsCollapsed = !twoIsCollapsed;
+      }
+
+      document.querySelector('#button-two').addEventListener('click', toggleTwo)
+    </script>
+  </body>
+</html>
