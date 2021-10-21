@@ -8,8 +8,8 @@
   "author": "Dave Honneffer",
   "license": "MIT",
   "scripts": {
+    "dev": "vite",
     "test": "node test/test",
-    "test:serve": "node test/debug",
     "test:e2e": "yarn cypress open",
     "preversion": "yarn test",
     "version": "npm publish",
@@ -19,6 +19,7 @@
     "cypress": "^8.0.0",
     "drnm": "^0.9.0",
     "fastify": "^3.19.2",
-    "fastify-static": "^4.2.2"
+    "fastify-static": "^4.2.2",
+    "vite": "^2.6.10"
   }
 }

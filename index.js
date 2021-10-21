@@ -1,13 +1,25 @@
 const windowExists = (typeof window !== 'undefined')
 
+let prefersMotion = true
+
+if (windowExists) {
+  const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const callback = ({ matches }) => prefersMotion = !matches
+  query.addEventListener('change', callback)
+  callback(query)
+}
+
 const removeTransition = el => {
   el.style.transition = null
   el.style.backfaceVisibility = null
   el.style.overflow = null
 }
 
-const addTransition = el => {
-  el.style.transition = 'height var(--f-expansion-duration, 0.3s)'
+const addTransition = (el) => {
+  // we set timing to something insanely short
+  // when reducing motion so the after-* hooks still fire
+  const timing = prefersMotion ? 'var(--f-expansion-duration, 0.3s)' : '0.01s'
+  el.style.transition = `height ${timing}`
   el.style.backfaceVisibility = 'hidden'
   el.style.overflow = 'hidden'
 }
