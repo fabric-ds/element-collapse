@@ -5,7 +5,7 @@ let prefersMotion = true
 if (windowExists) {
   const query = window.matchMedia('(prefers-reduced-motion: reduce)')
   const callback = ({ matches }) => prefersMotion = !matches
-  query.addListener(callback)
+  query.addEventListener('change', callback)
   callback(query)
 }
 
@@ -43,13 +43,12 @@ export const expand = (el, done) => {
   removeTransition(el)
   el.style.height = 'auto'
   let dest = el.scrollHeight
-  const endState = () => el.style.height = dest + 'px'
   windowExists && requestAnimationFrame(() => {
     el.addEventListener('transitionend', afterExpandCallback, { once: true })
     el.style.height = '0px'
     el.style.transitionTimingFunction = 'ease-out'
     addTransition(el)
-    requestAnimationFrame(endState)
+    requestAnimationFrame(() => el.style.height = dest + 'px')
   })
 }
 
@@ -61,12 +60,11 @@ export const collapse = (el, done) => {
   const afterCollapseCallback = getAfterCollapseCallback(done)
   removeTransition(el)
   let original = el.scrollHeight
-  const endState = () => el.style.height = '0px'
   windowExists && requestAnimationFrame(() => {
     el.addEventListener('transitionend', afterCollapseCallback, { once: true })
     el.style.height = original + 'px'
     el.style.transitionTimingFunction = 'ease-in'
     addTransition(el)
-    requestAnimationFrame(endState)
+    requestAnimationFrame(() => el.style.height = '0px')
   })
 }
