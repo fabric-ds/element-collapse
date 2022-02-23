@@ -54,7 +54,7 @@ export const expand = (el, done) => {
 }
 
 /**
- * Transitions an element from 0 to a detected height
+ * Transitions an element from a detected height to 0
  * @type {(el: HTMLElement, done?: function) => void}
  */
 export const collapse = (el, done) => {
