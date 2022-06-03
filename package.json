@@ -4,14 +4,19 @@
   "description": "pure JS hooks to animate the expand/collapse of an element",
   "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
   "repository": "https://github.com/finn-no/element-collapse",
   "author": "Dave Honneffer",
   "license": "MIT",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "dev": "vite",
     "test": "node test/test",
     "test:e2e": "yarn cypress open",
-    "preversion": "yarn test",
+    "preversion": "yarn test && tsc",
     "version": "npm publish",
     "postversion": "git push --follow-tags"
   },
@@ -20,6 +25,7 @@
     "drnm": "^0.9.0",
     "fastify": "^3.19.2",
     "fastify-static": "^4.2.2",
+    "typescript": "^4.7.2",
     "vite": "^2.6.10"
   }
 }

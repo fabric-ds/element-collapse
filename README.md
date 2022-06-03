@@ -18,4 +18,9 @@ expand(el, () => {
   // callback for when the element is fully transitioned
   // you can emit events from here, or target content inside 'el'
 })
+
+// or async
+
+await expand(el)
+// do your after-transition stuff here!
 ```

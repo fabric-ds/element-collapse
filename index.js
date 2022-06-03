@@ -37,7 +37,8 @@ const getAfterCollapseCallback = (done) => () => {
 
 /**
  * Transitions an element from 0 to a detected height
- * @type {(el: HTMLElement, done?: function) => void | Promise}
+ * Will return a Promise when no 'done' callback is provided
+ * @type {(el: HTMLElement, done?: function) => void | Promise<void>}
  */
 export const expand = (el, done) => {
   const returnPromise = (() => {
@@ -59,7 +60,8 @@ export const expand = (el, done) => {
 
 /**
  * Transitions an element from a detected height to 0
- * @type {(el: HTMLElement, done?: function) => void | Promise}
+ * Will return a Promise when no 'done' callback is provided
+ * @type {(el: HTMLElement, done?: function) => void | Promise<void>}
  */
 export const collapse = (el, done) => {
   const returnPromise = (() => {
