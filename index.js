@@ -37,9 +37,13 @@ const getAfterCollapseCallback = (done) => () => {
 
 /**
  * Transitions an element from 0 to a detected height
- * @type {(el: HTMLElement, done?: function) => void}
+ * Will return a Promise when no 'done' callback is provided
+ * @type {(el: HTMLElement, done?: function) => void | Promise<void>}
  */
 export const expand = (el, done) => {
+  const returnPromise = (() => {
+    if (!done) return new Promise(r => { done = r })
+  })()
   const afterExpandCallback = getAfterExpandCallback(el, done)
   removeTransition(el)
   el.style.height = 'auto'
@@ -51,13 +55,18 @@ export const expand = (el, done) => {
     addTransition(el)
     requestAnimationFrame(() => el.style.height = dest + 'px')
   })
+  if (returnPromise) return returnPromise
 }
 
 /**
  * Transitions an element from a detected height to 0
- * @type {(el: HTMLElement, done?: function) => void}
+ * Will return a Promise when no 'done' callback is provided
+ * @type {(el: HTMLElement, done?: function) => void | Promise<void>}
  */
 export const collapse = (el, done) => {
+  const returnPromise = (() => {
+    if (!done) return new Promise(r => { done = r })
+  })()
   const afterCollapseCallback = getAfterCollapseCallback(done)
   removeTransition(el)
   let original = el.scrollHeight
@@ -68,4 +77,5 @@ export const collapse = (el, done) => {
     addTransition(el)
     requestAnimationFrame(() => el.style.height = '0px')
   })
+  if (returnPromise) return returnPromise
 }

@@ -13,11 +13,16 @@
     <div id="target-two">
       <div class="bg-blue-500 p-32"><h1>Content Two</h1></div>
     </div>
-    <button id="button-two">Toggle two</button>
+    <div class="flex flex-col">
+      <button id="button-two">Toggle two</button>
+      <button id="expand-one">Expand one</button>
+      <button id="collapse-one">Collapse one</button>
+    </div>
     <script type="module">
       import * as operations from './index.js'
 
       let twoIsCollapsed = false
+      const one = document.querySelector('#target-one')
       const two = document.querySelector('#target-two')
 
       function toggleTwo() {
@@ -25,7 +30,17 @@
         twoIsCollapsed = !twoIsCollapsed;
       }
 
+      async function expandOne() {
+        await operations.expand(one)
+        console.log("Expand completed")
+      }
+      function collapseOne() {
+        operations.collapse(one)
+      }
+
       document.querySelector('#button-two').addEventListener('click', toggleTwo)
+      document.querySelector('#collapse-one').addEventListener('click', collapseOne)
+      document.querySelector('#expand-one').addEventListener('click', expandOne)
     </script>
   </body>
 </html>
